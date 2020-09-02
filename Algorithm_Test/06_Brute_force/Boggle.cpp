@@ -1,11 +1,48 @@
 ﻿// 06_Brute_force.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
+#include <fstream>
 #include <iostream>
+#include <vector>
+
+using namespace std;
+
+ifstream& read_txt(ifstream& in, vector<char>& data);
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    string input_file = "input1.txt";
+    ifstream read_stream(input_file);
+
+    vector<char> input_data;
+
+    if (read_stream.is_open())
+    {
+        read_txt(read_stream, input_data);
+    }
+
+    size_t index = 0;
+    size_t length = static_cast<size_t>(sqrt(input_data.size()));
+    vector<vector<char> > data(length, vector<char>());
+    for (int i = 0; i < input_data.size(); ++i)
+    {
+        int index = static_cast<int>(i / length);
+        data[index].push_back(input_data[i]);
+    }
+
+}
+
+ifstream& read_txt(ifstream& in, vector<char>& data)
+{
+    char temp;
+
+    if (in)
+    {
+        while (in >> temp)
+            data.push_back(temp);
+    }
+
+    return in;
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
