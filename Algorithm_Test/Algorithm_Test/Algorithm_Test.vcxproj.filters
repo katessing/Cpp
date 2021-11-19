@@ -30,5 +30,8 @@
     <ClCompile Include="도로건설.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="디스플레이필터.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
